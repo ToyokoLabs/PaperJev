@@ -68,7 +68,7 @@ export default function App() {
   return (
     <div className="min-h-screen p-8 max-w-4xl mx-auto">
       <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-slate-800 mb-2">BioPaper Analysis</h1>
+        <h1 className="text-4xl font-bold text-slate-800 mb-2">PaperJev</h1>
         <p className="text-slate-600">Upload PDFs to extract themes and find matching PubMed papers</p>
       </header>
 
@@ -78,6 +78,32 @@ export default function App() {
             <div className="p-4 bg-blue-50 rounded-full">
               <Upload className="w-12 h-12 text-blue-500" />
             </div>
+          </div>
+
+          <input
+            type="file"
+            multiple
+            accept=".pdf"
+            onChange={handleFileChange}
+            className="hidden"
+            id="pdf-upload"
+          />
+          <label
+            htmlFor="pdf-upload"
+            className="cursor-pointer bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block mb-4"
+          >
+            Select PDF Papers
+          </label>
+          <div className="text-sm text-slate-500 mb-2">
+            {files.length > 0
+              ? `${files.length} files selected`
+              : "No files selected"}
+          </div>
+
+          <div className="flex items-center gap-3 mb-2">
+            <div className="flex-1 h-px bg-slate-200"></div>
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">OR</span>
+            <div className="flex-1 h-px bg-slate-200"></div>
           </div>
 
           <div className="mb-8 p-6 bg-slate-50 rounded-xl border border-slate-200 text-left">
@@ -100,7 +126,7 @@ export default function App() {
             <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
               <div className="flex-1">
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  Papers to Download
+                  Papers to Download from NCBI
                 </label>
                 <input
                   type="number"
@@ -116,27 +142,6 @@ export default function App() {
               </div>
             </div>
           </div>
-
-          <input
-            type="file"
-            multiple
-            accept=".pdf"
-            onChange={handleFileChange}
-            className="hidden"
-            id="pdf-upload"
-          />
-          <label
-            htmlFor="pdf-upload"
-            className="cursor-pointer bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block mb-4"
-          >
-            Select PDF Papers
-          </label>
-          <div className="text-sm text-slate-500 mb-8">
-            {files.length > 0
-              ? `${files.length} files selected`
-              : "No files selected"}
-          </div>
-
 
           <button
             onClick={startAnalysis}
