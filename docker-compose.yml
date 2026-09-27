@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    image: dnalinux/jevpapers:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_URL=http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # Linux compat; harmless on Docker Desktop/macOS
+    volumes:
+      - ./config.json:/app/config.json:ro        # NCBI + typesafe creds (never baked into image)
+      - ./ollama_config.json:/app/ollama_config.json:ro   # model + params
+      - bio_sessions:/tmp/bio_papers_sessions    # session artifacts survive container restarts
+    restart: unless-stopped
+
+volumes:
+  bio_sessions:

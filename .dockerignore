@@ -1,0 +1,14 @@
+.git
+.venv
+__pycache__/
+**/__pycache__/
+*.py[oc]
+config.json
+ollama_config.json
+papers.json
+relevant_papers.json
+summary.md
+frontend/node_modules
+frontend/dist
+.env
+.python-version

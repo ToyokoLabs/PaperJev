@@ -1,0 +1,8 @@
+{
+    "ollama_url": "http://localhost:11434",
+    "model": "your-cloud-model-name",
+    "parameters": {
+        "temperature": 0.3,
+        "num_ctx": 32768
+    }
+}
