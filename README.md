@@ -117,6 +117,10 @@ Then fill `config.json` with your own credentials (NCBI email/API key and `TYPES
 
 ### Usage
 ```bash
+git clone https://github.com/ToyokoLabs/PaperJev.git
+cd PaperJev
+```
+```bash
 docker compose up -d --build   # build locally
 # or pull the published image (skips the build):
 docker compose pull && docker compose up -d
