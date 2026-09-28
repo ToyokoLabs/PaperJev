@@ -136,6 +136,10 @@ Then open **http://localhost:8000** in your browser.
 **Note**: in-flight analysis sessions live in app memory and are lost when the container restarts.
 
 ---
+## Related Resources
+- **Toyoko Bio** — https://toyoko.io/
+- **Tonina** — https://github.com/DNALinux/tonina
+- **DNALinux** — https://dnalinux.com/
 
 ## License
 
