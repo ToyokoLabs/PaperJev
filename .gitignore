@@ -13,8 +13,8 @@ wheels/
 config.json
 ollama_config.json
 
-# Generated data & outputs
-papers.json
+# Generated data & outputs (root only; copies in testdata/ are committed as test fixtures)
+/papers.json
 relevant_papers.json
 summary.md
 
