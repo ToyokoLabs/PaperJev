@@ -133,3 +133,9 @@ Then open **http://localhost:8000** in your browser.
 - Rebuild the multi-arch image: `docker buildx build --platform linux/amd64,linux/arm64 -t dnalinux/jevpapers:latest --push .`
 
 **Note**: in-flight analysis sessions live in app memory and are lost when the container restarts.
+
+---
+
+## License
+
+This project is released under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html) — see the [LICENSE](LICENSE) file for the full text.

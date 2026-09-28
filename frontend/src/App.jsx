@@ -90,7 +90,7 @@ export default function App() {
         </p>
         <ol className="list-decimal ml-5 mt-2 space-y-1">
           <li>Summarize your PDFs and synthesize their common themes with an LLM (or use the summary you paste);</li>
-          <li>Search NCBI PubMed for newly published papers matching those themes;</li>
+          <li>Download a batch of recent biology papers from NCBI PubMed (the search covers the last 7 days; it is a broad biology search, not yet matched to your themes);</li>
           <li>Filter the search results by relevance against your themes, so you only see papers worth reading.</li>
         </ol>
         <p className="mt-2">
@@ -296,6 +296,15 @@ export default function App() {
           className="text-blue-600 hover:underline"
         >
           GitHub
+        </a>
+        {' '}· Released under the{' '}
+        <a
+          href="https://www.gnu.org/licenses/gpl-3.0.en.html"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          GNU GPL v3
         </a>
       </footer>
     </div>
