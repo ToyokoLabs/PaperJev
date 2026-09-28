@@ -38,6 +38,9 @@ export default function App() {
     setFiles([...e.target.files]);
   };
 
+  const hasFiles = files.length > 0;
+  const hasSummary = summaryText.trim().length > 0;
+
   const extractProgress = (statusText) => {
     if (!statusText) return 0;
     const match = statusText.match(/(\d+)%/);
@@ -94,18 +97,34 @@ export default function App() {
             onChange={handleFileChange}
             className="hidden"
             id="pdf-upload"
+            disabled={hasSummary}
           />
           <label
             htmlFor="pdf-upload"
-            className="cursor-pointer bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block mb-4"
+            className={`cursor-pointer bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block mb-4 ${hasSummary ? "opacity-50 pointer-events-none" : ""}`}
           >
             Select PDF Papers
           </label>
           <div className="text-sm text-slate-500 mb-2">
-            {files.length > 0
-              ? `${files.length} files selected`
-              : "No files selected"}
+            {hasFiles ? (
+              <>
+                {files.length} {files.length === 1 ? "file" : "files"} selected
+                <button
+                  onClick={() => setFiles([])}
+                  className="ml-2 text-blue-600 hover:underline text-xs"
+                >
+                  clear
+                </button>
+              </>
+            ) : (
+              "No files selected"
+            )}
           </div>
+          {hasSummary && (
+            <div className="text-xs text-slate-400 mb-4">
+              Disabled because a themes summary is provided — clear the text area to select PDFs instead.
+            </div>
+          )}
 
           <div className="flex items-center gap-3 mb-2">
             <div className="flex-1 h-px bg-slate-200"></div>
@@ -118,14 +137,17 @@ export default function App() {
               Existing Themes Summary (Optional)
             </label>
             <textarea
-              className="w-full p-3 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className={`w-full p-3 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all ${hasFiles ? "opacity-50 cursor-not-allowed" : ""}`}
               rows="4"
               placeholder="Paste your summary.md content here to skip PDF analysis..."
               value={summaryText}
+              disabled={hasFiles}
               onChange={(e) => setSummaryText(e.target.value)}
             />
             <p className="text-xs text-slate-500 mt-2">
-              If provided, the system will skip PDF parsing and go straight to PubMed search.
+              {hasFiles
+                ? "Disabled because PDF papers are selected — clear the selection to paste a summary instead."
+                : "If provided, the system will skip PDF parsing and go straight to PubMed search."}
             </p>
           </div>
 
