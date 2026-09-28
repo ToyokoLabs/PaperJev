@@ -1,3 +1,4 @@
+import argparse
 import json
 from pubmed_client import PubMedClient
 import logging
@@ -13,6 +14,14 @@ def save_papers_to_json(papers, filename="papers.json"):
     print(f"Successfully saved {len(papers)} papers to {filename}")
 
 def main():
+    parser = argparse.ArgumentParser(description="Download recent biology papers from NCBI PubMed.")
+    parser.add_argument("--count", type=int, default=1000,
+                        help="Number of papers to download (default: 1000)")
+    args = parser.parse_args()
+
+    if args.count < 1:
+        parser.error("--count must be at least 1")
+
     # Initialize the client
     try:
         client = PubMedClient()
@@ -24,8 +33,8 @@ def main():
     # Define search term
     search_term = "biology"
 
-    print(f"Fetching recent papers for search term: {search_term}...")
-    papers = client.get_recent_biology_papers(search_term=search_term, days=7)
+    print(f"Fetching up to {args.count} recent papers for search term: {search_term}...")
+    papers = client.get_recent_biology_papers(search_term=search_term, days=7, retmax=args.count)
 
     if not papers:
         print("No papers found or an error occurred.")

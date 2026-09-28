@@ -35,9 +35,10 @@ Update `config.json` with your NCBI credentials:
 ```
 
 ### Usage
-Run the main script to fetch papers from the last 7 days:
+Run the downloader to fetch papers from the last 7 days (default 1000; use `--count` for a different number):
 ```bash
-uv run main.py
+uv run pubmed_downloader.py            # default 1000 papers
+uv run pubmed_downloader.py --count 200
 ```
 - **Output**: All retrieved papers (title, journal, abstract) are saved to `papers.json`.
 
