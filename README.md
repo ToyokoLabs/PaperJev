@@ -1,4 +1,5 @@
-# Biology Paper Toolset
+# PaperJev
+## Biology Paper Toolset
 
 A set of Python modules for retrieving and analyzing scientific biology papers.
 
