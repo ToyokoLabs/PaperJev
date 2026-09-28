@@ -77,10 +77,26 @@ export default function App() {
         </a>
       </div>
 
-      <header className="mb-12 text-center mt-4">
+      <header className="mb-8 text-center mt-4">
         <h1 className="text-4xl font-bold text-slate-800 mb-2">PaperJev</h1>
         <p className="text-slate-600">Upload PDFs to extract themes and find matching PubMed papers</p>
       </header>
+
+      <div className="mb-8 p-5 bg-blue-50/60 rounded-xl border border-blue-100 text-left text-sm text-slate-600 leading-relaxed">
+        <p className="font-semibold text-slate-700 mb-1">What this tool does</p>
+        <p>
+          PaperJev finds recent scientific papers related to your research. Give it a set of your
+          own papers (or a written summary of your research themes), and it will:
+        </p>
+        <ol className="list-decimal ml-5 mt-2 space-y-1">
+          <li>Summarize your PDFs and synthesize their common themes with an LLM (or use the summary you paste);</li>
+          <li>Search NCBI PubMed for newly published papers matching those themes;</li>
+          <li>Filter the search results by relevance against your themes, so you only see papers worth reading.</li>
+        </ol>
+        <p className="mt-2">
+          Uploading papers and pasting a summary are alternatives — provide just one. The paper count controls how many results are fetched from PubMed.
+        </p>
+      </div>
 
       {!sessionId ? (
         <div className="bg-white p-12 rounded-2xl shadow-xl border border-slate-200 text-center">
