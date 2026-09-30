@@ -22,11 +22,9 @@ class RelevanceFilterNimble:
         self.config = self._load_config(ollama_config_path)
 
         ollama_url = self.config.get("ollama_url", "http://localhost:11434")
-        # TypeSafe SDK expects an API root; Ollama exposes the compatible
-        # endpoints under /v1, so make sure the URL ends with /v1.
+        # The SDK appends /v1/systemone to this URL, so pass the Ollama root
+        # as-is (e.g. http://localhost:11434) without adding /v1 ourselves.
         base_url = ollama_url.rstrip("/")
-        if not base_url.endswith("/v1"):
-            base_url = f"{base_url}/v1"
 
         # Ollama does not require a real API key, but the SDK requires a
         # non-empty value for its Authorization header.
