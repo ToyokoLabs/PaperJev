@@ -101,6 +101,13 @@ uv run relevance_filter_LLM.py
 ```
 Same inputs and output; uses `ollama_config.json` instead of the TypeSafe key.
 
+A second Ollama-based alternative uses the local **Nimble** decision model, a JEV-style classifier that runs entirely locally through Ollama (no TypeSafe API key required):
+```bash
+ollama pull nimble
+uv run relevance_filter_nimble.py
+```
+This uses the same `papers.json` and `summary.md` inputs and writes the same `relevant_papers.json` output. It reads `ollama_config.json` for the Ollama URL and sends requests to Ollama's TypeSafe-compatible `/v1/systemone` endpoint.
+
 ### In the web app
 Filtering runs automatically after the NCBI download completes; results appear in the **Relevant PubMed Papers** card with their relevance scores, downloadable as JSON.
 
